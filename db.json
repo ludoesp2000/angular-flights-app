@@ -1,0 +1,60 @@
+{
+  "voli": [
+    {
+      "id": 1,
+      "partenza": "ROMA",
+      "destinazione": "PISA",
+      "gate": 10,
+      "prezzo": 999,
+      "oraArrivo": "11:25",
+      "oraPartenza": "10:05",
+      "compagnia": "ALITALIA",
+      "prenotato": true,
+      "dataPartenza": "2020-11-01T16:07:04.000Z"
+    },
+    {
+      "id": 2,
+      "partenza": "ROMA",
+      "destinazione": "PISA",
+      "gate": 20,
+      "prezzo": 999,
+      "oraArrivo": "11:25",
+      "oraPartenza": "10:05",
+      "compagnia": "alitalia",
+      "dataPartenza": "2020-11-01T16:07:04.000Z",
+      "prenotato": false
+    },
+    {
+      "id": 3,
+      "partenza": "VENEZIA",
+      "destinazione": "TORINO",
+      "gate": 30,
+      "prezzo": 999,
+      "oraArrivo": "11:25",
+      "oraPartenza": "10:05",
+      "compagnia": "alitalia",
+      "dataPartenza": "2020-11-01T16:07:04.000Z",
+      "prenotato": false
+    }
+  ],
+  "user": [
+    {
+      "id": "admin",
+      "password": "admin",
+      "role": "admin",
+      "token": "admin"
+    },
+    {
+      "id": "operator",
+      "password": "operator",
+      "role": "operator",
+      "token": "operator"
+    },
+    {
+      "id": "viewer",
+      "password": "viewer",
+      "role": "viewer",
+      "token": "viewer"
+    }
+  ]
+}

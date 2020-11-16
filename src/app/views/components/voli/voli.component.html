@@ -1,0 +1,6 @@
+<div class="mt-4 d-flex flex-column align-items-center">
+  <h1>Lista voli</h1>
+</div>
+<div *ngFor="let volo of voloList">
+  <app-volo [volo]="volo" (prenotazioneVolo)="voloPrenotato(volo)" ></app-volo>
+</div>

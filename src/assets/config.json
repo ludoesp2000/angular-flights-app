@@ -1,0 +1,9 @@
+{
+  "someConfigSettings": {
+    "appCreator": {
+      "creatorName": "Ludovico",
+      "creatorSurname": "Esposito"
+    }
+  },
+  "defaultLang": "it"
+}

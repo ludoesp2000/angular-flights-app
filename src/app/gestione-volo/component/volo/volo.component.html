@@ -1,0 +1,33 @@
+<div>
+  <div class="card mt-4" style="width: 100%" [ngClass]="{'border border-primary': (volo.prenotato)}">
+    <div class="card-body">
+      <h5 class="card-title">Volo n. {{volo.id}}</h5>
+      <p class="card-text d-flex justify-content-between" *ngIf="!volo.prenotato || lastPrice">
+        <span>Partenza: <span class="font-weight-light">{{volo.partenza | truncate: 3}}</span>,</span>
+        <span>Destinazione: <span class="font-weight-light">{{volo.destinazione | truncate: 3 }}</span>,</span>
+        <span>Ora Partenza: <span class="font-weight-light">{{volo.oraPartenza}}</span>,</span>
+        <span>Ora Arrivo: <span class="font-weight-light">{{volo.oraArrivo}}</span>,</span>
+        <span>Compagnia: <span class="font-weight-light">{{volo.compagnia}}</span>,</span>
+        <span>Gate: <span class="font-weight-light">{{volo.gate}}</span>,</span>
+        <span>DataPartenza: <span class="font-weight-light">{{volo.dataPartenza | date:'dd/MM/yyyy'}}</span></span>
+      </p>
+      <span class="card-text">Prezzo <span class="font-weight-bold">{{volo.prezzo}}€</span></span>
+      <div class="d-flex justify-content-between mt-4" *ngIf="(!lastPrice); else voloLastPrice">
+        <button (click)="prenota(true)" class="btn btn-primary" *ngIf="!volo.prenotato">{{ 'voli-button.blocca' | translate }}</button>
+        <div class="d-flex justify-content-end" [ngClass]="{'w-100': volo.prenotato}">
+          <button class="btn btn-warning mr-2" (click)="edit()">{{ 'voli-button.modifica' | translate }}</button>
+          <button class="btn btn-danger" (click)="cancella()">{{ 'voli-button.cancella' | translate }}</button>
+        </div>
+      </div>
+      <ng-template #voloLastPrice>
+        <div class="d-flex justify-content-end">
+          <button (click)="prenota(false)" class="btn btn-danger">{{ 'voli-button.sblocca' | translate }}</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="volo.prenotato && !lastPrice">
+    Il volo da: {{volo.partenza}} | per: {{volo.destinazione}} è stato bloccato nei Last Prices
+  </div>
+</div>
+

@@ -1,0 +1,17 @@
+{
+  "menu": {
+    "home": "Home",
+    "tutorial": "Tutoriel de base",
+    "lista-voli": "Liste des vols",
+    "nuovo-volo": "Nouveau vol",
+    "nuovo-user": "Nouveau user",
+    "edit-volo": "Modifier vol"
+  },
+  "voli-button": {
+    "blocca": "Prix de gel",
+    "sblocca": "Supprimer",
+    "modifica": "Modifier",
+    "cancella": "Supprimer"
+  },
+  "lingua": "FRA"
+}

@@ -1,0 +1,6 @@
+<div class="mt-4 d-flex flex-column align-items-center">
+  <h1>Last prices</h1>
+</div>
+<div *ngFor="let volo of voloList">
+  <app-volo [volo]="volo" [lastPrice]="true" ></app-volo>
+</div>

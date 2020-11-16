@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home" routerLinkActive="text-light" href="#">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          {{ 'menu.home' | translate }}
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/about" routerLinkActive="text-light" href="#">
+          <i class="fa fa-info" aria-hidden="true"></i>
+          {{ 'menu.tutorial' | translate }}
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/voli" routerLinkActive="text-light" href="#">
+          <i class="fa fa-list" aria-hidden="true"></i>
+          {{ 'menu.lista-voli' | translate }}
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/prenotazioni" routerLinkActive="text-light" href="#">
+          <i class="fa fa-cart-plus" aria-hidden="true"></i>
+          Last Prices<span *ngIf="numeroPrenotazioni !== 0" class="ml-1 badge badge-pill badge-light">{{numeroPrenotazioni}}</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/new-volo" routerLinkActive="text-light" href="#">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          {{ 'menu.nuovo-volo' | translate }}
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link disabled font-weight-light" routerLink="/edit-volo" routerLinkActive="text-light" href="#">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          {{ 'menu.edit-volo' | translate }}
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav" *ngIf="userCanManage()">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/new-user" routerLinkActive="text-light" href="#">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          {{ 'menu.nuovo-user' | translate }}
+        </a>
+      </li>
+    </ul>
+    <div class="btn-group mr-2" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        {{ 'lingua' | translate }}
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" href="javascript: void(0)" (click)="setLang('it')" *ngIf="('lingua' | translate) !== 'ITA'">ITA</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="javascript: void(0)" (click)="setLang('en')" *ngIf="('lingua' | translate) !== 'ENG'">ENG</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="javascript: void(0)" (click)="setLang('es')" *ngIf="('lingua' | translate) !== 'SPA'">SPA</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="javascript: void(0)" (click)="setLang('fr')" *ngIf="('lingua' | translate) !== 'FRA'">FRA</a></li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" (click)="navigate()" *ngIf="!userSessionService.isLoggedAnyone()" >Login</button>
+    <button class="btn btn-danger" (click)="logout()" *ngIf="userSessionService.isLoggedAnyone()" >Logout</button>
+  </div>
+</nav>
+<!-- [ngClass]="{'active' : routeActive === '/home'} -->

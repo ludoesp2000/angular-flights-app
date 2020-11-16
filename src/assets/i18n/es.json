@@ -1,0 +1,17 @@
+{
+  "menu": {
+    "home": "Home",
+    "tutorial": "Tutorial bàsico",
+    "lista-voli": "Lista de vuelos",
+    "nuovo-volo": "Nuevo vuelo",
+    "nuovo-user": "Nuevo user",
+    "edit-volo": "Cambiar vuelo"
+  },
+  "voli-button": {
+    "blocca": "Congelar precio",
+    "modifica": "Editar",
+    "cancella": "Eliminar",
+    "sblocca": "Eliminar"
+  },
+  "lingua": "ESP"
+}

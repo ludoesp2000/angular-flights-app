@@ -1,0 +1,67 @@
+<div class="mt-4 d-flex flex-column align-items-center">
+  <h1>{{ 'menu.nuovo-volo' | translate }}</h1>
+</div>
+
+<form #myForm="ngForm">
+  <!-- ngNativeValidate -->
+  <div class="form-group">
+    <label for="partenza">Partenza</label>
+    <select name="partenza" [(ngModel)]="volo.partenza" (change)="partenzaChanged($event.target.value)" class="form-control" id="partenza" required #partenza="ngModel">
+      <option *ngFor="let item of partenze" [value]="item.partenza">{{item.partenza}}</option>
+    </select>
+    <small [hidden]="partenza.valid || partenza.dirty" id="partenza_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="destinazione">Destinazione</label>
+    <select name="destinazione" [(ngModel)]="volo.destinazione" class="form-control" id="destinazione" required #destinazione="ngModel">
+      <option *ngFor="let item of lazyDestinazioni" [value]="item">{{item}}</option>
+    </select>
+    <small [hidden]="destinazione.valid || destinazione.dirty" id="destinazione_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="oraPartenza">Ora Partenza</label>
+    <input name="oraPartenza" [(ngModel)]="volo.oraPartenza" type="text" class="form-control" id="oraPartenza" required autocomplete="off" #oraPartenza="ngModel">
+    <small [hidden]="oraPartenza.valid || oraPartenza.dirty" id="oraPartenza_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="oraArrivo">Ora Arrivo</label>
+    <input name="oraArrivo" [(ngModel)]="volo.oraArrivo" type="text" class="form-control" id="oraArrivo" required autocomplete="off" #oraArrivo="ngModel">
+    <small [hidden]="oraArrivo.valid || oraArrivo.dirty" id="oraArrivo_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="dataPartenza">Data Partenza</label>
+    <input name="dataPartenza" [(ngModel)]="volo.dataPartenza" type="text" placeholder="Datepicker" class="form-control" id="dataPartenza" bsDatepicker [bsConfig]="{ containerClass: 'theme-green', dateInputFormat: 'DD/MM/YYYY' }" required #dataPartenza="ngModel">
+    <small [hidden]="dataPartenza.valid || dataPartenza.dirty" id="dataPartenza_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="gate">Gate</label>
+    <input name="gate" [(ngModel)]="volo.gate" type="number" class="form-control" id="gate" required autocomplete="off" #gate="ngModel">
+    <small [hidden]="gate.valid || gate.dirty" id="gate_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="compagnia">Compagnia</label>
+    <input name="compagnia" [(ngModel)]="volo.compagnia" type="text" class="form-control" id="compagnia" required autocomplete="off" #compagnia="ngModel">
+    <small [hidden]="compagnia.valid || compagnia.dirty" id="compagnia_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="form-group">
+    <label for="prezzo">Prezzo</label>
+    <input name="prezzo" [(ngModel)]="volo.prezzo" type="number" class="form-control" id="prezzo" required autocomplete="off" #prezzo="ngModel">
+    <small [hidden]="prezzo.valid || prezzo.dirty" id="prezzo_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <button [disabled]="!myForm.valid" type="button" (click)="submitVolo()" class="btn btn-primary">Submit</button>
+
+</form>
+<div class="my-5">
+  {{volo | json}}
+</div>
+
+
+

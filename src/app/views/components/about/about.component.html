@@ -1,0 +1,126 @@
+<div class="mt-4 d-flex flex-column align-items-center">
+  <h1>Readme</h1>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <p>App organizzata in moduli, divisi inizialmente in views e gestione-volo. Ogni modulo contiene tutti i file che gestiscono le views/i voli</p>
+  <p>Girando un pò su git hub ci si rende conto che l'organizzazione più logica si ottiene, anzichè dividendo i file per competenza. dividendo i file per tipo:</p>
+  <ul>
+    <li>App:</li>
+    <ul>
+      <li>directives</li>
+      <li>pipes</li>
+      <li>services</li>
+      <li>models</li>
+      <li>pages</li>
+      <li>components</li>
+
+      <li>app-routing</li>
+      <li>app.html</li>
+      <li>app.component</li>
+      <li>app.module</li>
+    </ul>
+    <li>Assets</li>
+    <li>Environments</li>
+    <li>angular.json</li>
+    <li>package.json and package-lock.json</li>
+    <li>Other configurations</li>
+  </ul>
+  <p>Il tutto ovviamente diviso in altre sotto cartelle organizzate per competenza => es. services/user/... && services/volo/...</p>
+  <p></p>
+  <p>I moduli importano tutto ciò che serve ai file che si trovano dentro la stessa cartella del modulo</p>
+  <p>La gestione degli import/export dei moduli non è stata fatta benissimo</p>
+  <p>Best practice => creare uno shared module che esporta moduli</p>
+  <p>Se nella mia applicazione ho bisogno, per esigenze di business, di importare più moduli dentro altri moduli</p>
+  <p>Es. guardando l'organizzazione scritta sopra ho bisogno di importare il modulo dei servizi dell'user, il modulo dei servizi del volo, il BsDropdownModule, il BsDatePickerModule e l'AgGridModule SIA DENTRO IL MODULO PAGES CHE DENTRO IL MODULO COMPONENTS</p>
+  <p>Invece di fare tutti questi import sia dentro il modulo pages che dentro il modulo components mi conviene creare uno SharedModule, esportare questi moduli ed importare lo ShareModule dentro il modulo pages e il modulo components</p>
+  <p></p>
+  <p>I dati che il fake back end restituisce si trovano in root/db.json</p>
+  <p>Gestione dei ruoli:</p>
+  <ul>
+    <li>Un utente VIEWER può vedere la lista voli, aggiungere un volo ai last prices e vedere i last prices</li>
+    <li>Un utente OPERATOR può vedere la lista voli, aggiungere un volo ai last prices e vedere i last prices, aggiungere, modificare e cancellare un volo</li>
+    <li>Un utente ADMIN può vedere la lista voli, aggiungere un volo ai last prices e vedere i last prices, creare, modificare e cancellare un volo, creare un utente OPERATOR/VIEWER.</li>
+  </ul>
+  <p>Un utente admin può essere inserito solo da db.json. Gli utenti possono essere modificati o cancellati solo da db.json</p>
+</div>
+
+<hr>
+
+<div class="mt-4 d-flex flex-column align-items-center">
+  <h1>Binding and examples</h1>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <p>Reference databinding</p>
+  <input type="text" #txt (keyup)="'keyup'">
+  <h4>Hai scritto: <span class="font-weight-light">{{txt.value}}</span></h4>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <p>Two way data binding</p>
+  <input type="text" [(ngModel)]="testo">
+  <h4>Hai scritto: <span class="font-weight-light">{{testo}}</span></h4>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <p>Two way data binding con watcher</p>
+  <input type="text" [(ngModel)]="testoWatcher" (ngModelChange)="testoChanged($event)">
+  <h4>Hai scritto: <span class="font-weight-light">{{testoWatcher}}</span></h4>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <p>Two way data binding con class e style model</p>
+  <input type="number" [(ngModel)]="variabileNgStyleOrClass">
+  <h4>Hai scritto: <span class="font-weight-light">{{variabileNgStyleOrClass}}</span></h4>
+  <button
+    class="btn"
+    [ngClass]="{'btn-primary': variabileNgStyleOrClass%2 == 1, 'btn-danger': variabileNgStyleOrClass%2 != 1}"
+    [ngStyle]="{width: (!variabileNgStyleOrClass || variabileNgStyleOrClass < 60 || variabileNgStyleOrClass === 0) ? 60 + 'px' : variabileNgStyleOrClass + 'px'}" (click)="test()">Test</button>
+  <div [ngSwitch]="variabileNgStyleOrClass" appHiglight defaultColor="red" hoverColor="blue">
+    <div *ngSwitchCase="1">Lun</div>
+    <div *ngSwitchCase="2">Mar</div>
+    <div *ngSwitchCase="3">Mer</div>
+    <div *ngSwitchCase="4">Giov</div>
+    <div *ngSwitchCase="5">Ven</div>
+    <div *ngSwitchCase="6">Sab</div>
+    <div *ngSwitchCase="7">Dom</div>
+    <div *ngSwitchDefault>Scrivi un numero da 1 a 7 per lo switch case nell'input two way data binding con watcher</div>
+  </div>
+  <p>Scrivi un numero superiore a 60 per attivare l'ngStyle nell'input two way data binding con watcher</p>
+  <p>Se l'input two way data binding con watcher è un numero pari il btn sarà blu, altrimenti rosso</p>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <button class="btn btn-info" #btnTest>Test RXJS | #ref event handling</button>
+</div>
+
+<hr>
+
+<div class="d-flex flex-column align-items-center">
+  <ag-grid-angular
+    style="width: 500px; height: 200px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>
+
+<hr class="divisor">
+
+<div class="d-flex flex-column align-items-center">
+  <button class="btn btn-info" (click)="esportAsCsv()" #btnTest>EXPORT AS CSV</button>
+</div>

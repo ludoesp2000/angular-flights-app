@@ -1,0 +1,17 @@
+{
+  "menu": {
+    "home": "Home",
+    "tutorial": "Basic tutorial",
+    "lista-voli": "Flight list",
+    "nuovo-volo": "New flight",
+    "nuovo-user": "New user",
+    "edit-volo": "Edit flight"
+  },
+  "voli-button": {
+    "blocca": "Freeze price",
+    "modifica": "Edit",
+    "cancella": "Delete",
+    "sblocca": "Delete"
+  },
+  "lingua": "ENG"
+}

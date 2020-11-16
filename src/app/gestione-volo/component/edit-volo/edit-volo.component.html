@@ -1,0 +1,65 @@
+<div class="mt-4 d-flex flex-column align-items-center">
+  <h1>{{ 'menu.edit-volo' | translate }}</h1>
+</div>
+
+<form [formGroup]="formVolo">
+
+  <div class="form-group">
+    <label for="partenza">Partenza</label>
+    <select class="form-control" formControlName="partenza" (change)="partenzaChanged($event.target.value)">
+      <option [value]="item.partenza" *ngFor="let item of partenze">{{item.partenza}}</option>
+    </select>
+    <small [hidden]="formVolo.controls.partenza.valid" id="partenza_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="destinazione">Destinazione</label>
+    <select class="form-control" formControlName="destinazione">
+      <option [value]="item" *ngFor="let item of lazyDestinazioni">{{item}}</option>
+    </select>
+    <small [hidden]="formVolo.controls.destinazione.valid" id="partenza_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="oraPartenza">Ora Partenza</label>
+    <input type="text" class="form-control" formControlName="oraPartenza">
+    <small [hidden]="formVolo.controls.oraPartenza.valid" id="oraPartenza_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="oraArrivo">Ora Arrivo</label>
+    <input type="text" class="form-control" formControlName="oraArrivo">
+    <small [hidden]="formVolo.controls.oraArrivo.valid" id="oraArrivo_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="dataPartenza">Data Partenza</label>
+    <input formControlName="dataPartenza" type="text" placeholder="Datepicker" class="form-control"bsDatepicker [bsConfig]="{ containerClass: 'theme-green', dateInputFormat: 'DD/MM/YYYY' }">
+    <small [hidden]="formVolo.controls.dataPartenza.valid" id="dataPartenza_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="gate">Gate</label>
+    <input formControlName="gate" type="number" class="form-control">
+    <small [hidden]="formVolo.controls.gate.valid" id="gate_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="compagnia">Compagnia</label>
+    <input formControlName="compagnia" type="text" class="form-control">
+    <small [hidden]="formVolo.controls.compagnia.valid" id="compagnia_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="form-group">
+    <label for="prezzo">Prezzo</label>
+    <input formControlName="prezzo" type="number" class="form-control">
+    <small [hidden]="formVolo.controls.prezzo.valid" id="prezzo_error" class="form-text text-muted">Campo obbligatorio o non valido</small>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-primary" (click)="updateVolo()">Salva volo</button>
+    <button class="btn btn-warning" (click)="reset()">Reset dati</button>
+    <button class="btn btn-danger" (click)="annulla()">Annulla</button>
+  </div>
+</form>
+<div>{{volo | json}}</div>

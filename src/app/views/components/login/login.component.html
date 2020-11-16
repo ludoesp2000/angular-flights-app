@@ -1,0 +1,39 @@
+<div class="mt-4 d-flex flex-column align-items-center" *ngIf="!newUserRoute()">
+  <h1>Login</h1>
+</div>
+<div class="mt-4 d-flex flex-column align-items-center" *ngIf="newUserRoute()">
+  <h1>{{ 'menu.nuovo-user' | translate }}</h1>
+</div>
+
+<hr>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input #usernameref="ngModel" autocomplete="off" required name="username" [(ngModel)]="username" type="text"
+      class="form-control" id="username">
+    <small [hidden]="usernameref.valid" id="username_error" class="form-text text-muted">Inserire il campo username</small>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input #passwordref="ngModel" autocomplete="off" required name="password" [(ngModel)]="password" type="password"
+      class="form-control" id="password">
+    <small [hidden]="passwordref.valid" id="password_error" class="form-text text-muted">Inserire il campo password</small>
+  </div>
+
+  <div class="form-group" *ngIf="newUserRoute()">
+    <label for="role">Role</label>
+    <select name="role" [(ngModel)]="role" class="form-control" id="role" required #roleref="ngModel">
+      <option *ngFor="let item of roles" [value]="item.value">{{item.label}}</option>
+    </select>
+    <small [hidden]="roleref.valid || roleref.dirty" id="partenza_error" class="form-text text-muted">Campo obbligatorio</small>
+  </div>
+
+  <div class="d-flex justify-content-center" *ngIf="!newUserRoute()">
+    <button class="btn btn-success" (click) = "login()">Login</button>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="newUserRoute()">
+    <button class="btn btn-success" (click) = "signIn()">Done</button>
+  </div>
+</form>

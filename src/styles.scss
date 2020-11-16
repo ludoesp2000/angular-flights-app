@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+div.divisor {
+  width: 50vw;
+  height: 1px;
+  background-color: blue;
+
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+
+  border: none !important;
+  outline: none !important;
+}
